@@ -44,7 +44,7 @@
       </div>
 
       <button type="button" class="mt-10 py-3 px-4 drop-shadow-lg inline-flex items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent bg-custom-accent2 text-white disabled:opacity-50 disabled:pointer-events-none">
-        <a href="{{ route('enquetes.index')}}">イベントページを表示</a>
+        <a href="{{ route('enquetes.index', $enquete->unique_identifier)}}">イベントページを表示</a>
       </button>
     </div>
   </div>

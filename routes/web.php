@@ -21,7 +21,9 @@ Route::get('/', function () {
 Route::controller(EnqueteController::class)->group(function () {
     Route::get('/create', 'create')->name('create');
     Route::get('/show/{unique_identifier}', 'show')->name('enquete.show');
-    Route::get('/index', 'index')->name('enquetes.index');
-    ROute::post('/store', 'store')->name('enquete.store');
+    Route::get('/index/{unique_identifier}', 'index')->name('enquetes.index');
+    Route::post('/store', 'store')->name('enquete.store');
+    Route::post('/update', 'update')->name('enquete.update');
+
 });
 
