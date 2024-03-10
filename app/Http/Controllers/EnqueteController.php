@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Enquete;
+use Illuminate\Support\Str;
 
 class EnqueteController extends Controller
 {
@@ -27,15 +29,26 @@ class EnqueteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $enquete = new Enquete;
+        $enquete->name = $request->name;
+        $enquete->event_name = $request->event_name;
+        $enquete->location = $request->location;
+        $enquete->reservation_time = $request->reservation_time;
+        $enquete->cuisine_type = $request->cuisine_type;
+        $enquete->ambiance = $request->ambiance;
+        $enquete->unique_identifier = Str::random(32); // 32文字のランダムな文字列
+        $enquete->save();
+
+    return redirect()->route('enquete.show', $enquete->unique_identifier);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show($unique_identifier)
     {
-        return view('enquetes.show');
+        $enquete = Enquete::where('unique_identifier', $unique_identifier)->firstOrFail();
+        return view('enquetes.show', compact('enquete'));
     }
 
     /**
