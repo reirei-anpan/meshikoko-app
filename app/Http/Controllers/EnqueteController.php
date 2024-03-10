@@ -11,7 +11,7 @@ class EnqueteController extends Controller
      */
     public function index()
     {
-        //
+        return view('enquetes.index');
     }
 
     /**
