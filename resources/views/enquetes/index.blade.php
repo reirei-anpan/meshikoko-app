@@ -18,11 +18,7 @@
       </div>
 
       <div class="mt-10 text-xl">
-            <p>イベント名 : とある日の飲み会</p>
-          </div>
-
-          <div class="mt-10">
-            {{$enqueteData->unique_identifier}}
+            <p>イベント名 : {{ $enqueteData->event_name }}</p>
           </div>
 
           <div class="flex flex-col mt-10">
