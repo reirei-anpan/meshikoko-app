@@ -17,8 +17,12 @@ class EnqueteController extends Controller
     {
         // 一意の値をもとにアンケート情報を取得
         $enqueteData = Enquete::where('unique_identifier', $unique_identifier)->firstOrFail();
-        // dd($enqueteData);
-        return view('enquetes.index', ['enqueteData' => $enqueteData]);
+        $votes = Vote::where('enquete_id', $enqueteData->id)->get();
+        // dd($votes);
+        return view('enquetes.index', [
+            'enqueteData' => $enqueteData,
+            'votes' => $votes
+        ]);
     }
 
     /**

@@ -25,6 +25,46 @@
             {{$enqueteData->unique_identifier}}
           </div>
 
+          <div class="flex flex-col mt-10">
+            <div class="-m-1.5 overflow-x-auto">
+              <div class="p-1.5 min-w-full inline-block align-middle">
+                <div class="border rounded-lg shadow overflow-hidden">
+                  <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th scope="col" class="px-6 py-3 text-start text-base font-semibold	 uppercase bg-custom-accent1">名前</th>
+                        <th scope="col" class="px-6 py-3 text-start text-base font-semibold uppercase bg-custom-accent1">場所</th>
+                        <th scope="col" class="px-6 py-3 text-start text-base font-semibold uppercase bg-custom-accent1">予約時間</th>
+                        <th scope="col" class="px-6 py-3 text-start text-base font-semibold uppercase bg-custom-accent1">食事系統</th>
+                        <th scope="col" class="px-6 py-3 text-start text-base font-semibold uppercase bg-custom-accent1">雰囲気</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                      {{-- オーナーの投票 --}}
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-base">{{ $enqueteData->name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-base">{{ $enqueteData->location }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-base">{{ $enqueteData->reservation_time }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-base">{{ $enqueteData->cuisine_type }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-base">{{ $enqueteData->ambiance }}</td>
+                      </tr>
+                      {{-- メンバーの投票 --}}
+                      @forEach ($votes as $vote)
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-base">{{ $vote->name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-base">{{ $vote->location }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-base">{{ $vote->reservation_time }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-base">{{ $vote->cuisine_type }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-base">{{ $vote->ambiance }}</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <button type="button" class="mt-10 py-3 px-4 drop-shadow-lg inline-flex items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent bg-custom-accent2 text-white disabled:opacity-50 disabled:pointer-events-none">
             候補を入力
           </button>
