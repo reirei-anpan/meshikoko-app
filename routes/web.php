@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EnqueteController;
+use App\Http\Controllers\VoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,11 @@ Route::controller(EnqueteController::class)->group(function () {
     Route::get('/index/{unique_identifier}', 'index')->name('enquetes.index');
     Route::post('/store', 'store')->name('enquete.store');
     Route::post('/update', 'update')->name('enquete.update');
-
+    Route::post('/enquete_update', 'enquete_update')->name('enquetes.enquete_update');
+    Route::get('/votes_create/{unique_identifier}', 'votes_create')->name('enquetes.votes_create');
+    Route::get('/edit/{id}', 'edit')->name('enquete.edit');
 });
 
+Route::controller(VoteController::class)->group(function () {
+
+});

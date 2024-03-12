@@ -33,6 +33,12 @@ class EnqueteController extends Controller
         return view('enquetes.create');
     }
 
+    public function votes_create($unique_identifier)
+    {
+        $enquete = Enquete::where('unique_identifier', $unique_identifier)->firstOrFail();
+        return view('votes.create', compact('enquete'));
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -63,9 +69,11 @@ class EnqueteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $enquete = Enquete::where('id', $id)->firstOrFail();
+        // dd($enquete);
+        return view('enquetes.edit', compact('enquete'));
     }
 
     /**
@@ -91,6 +99,21 @@ class EnqueteController extends Controller
 
         // 保存後、適切なレスポンスを返す（例: リダイレクト）
         return redirect()->route('enquetes.index', ['unique_identifier' => $enqueteId->unique_identifier]); // 保存後に適切なページへリダイレクト
+    }
+
+    public function enquete_update(Request $request)
+    {
+        // dd($request);
+        $enquete = Enquete::where('id', $request->id)->firstOrFail();
+        $enquete->name = $request->name;
+        $enquete->event_name = $request->event_name;
+        $enquete->location = $request->location;
+        $enquete->reservation_time = $request->reservation_time;
+        $enquete->cuisine_type = $request->cuisine_type;
+        $enquete->ambiance = $request->ambiance;
+        $enquete->save();
+
+        return redirect()->route('enquetes.index', $enquete->unique_identifier);
     }
 
     /**
