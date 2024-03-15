@@ -12,7 +12,6 @@
       </nav>
     </header>
 
-    {{-- TODO ここが 404 になるところから --}}
     <form method="POST" action="{{ route('enquetes.enquete_update') }}">
       @csrf
       <input type="hidden" name="id" value="{{ $enquete->id }}">

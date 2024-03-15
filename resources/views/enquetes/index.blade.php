@@ -44,7 +44,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-base">{{ $enqueteData->reservation_time }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-base">{{ $enqueteData->cuisine_type }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-base">{{ $enqueteData->ambiance }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-base text-gray-500 underline "><a href="{{ route('enquete.edit', $enqueteData->id)}}">編集</a></td>
+                    <td class="px-6 py-4 whitespace-nowrap text-base text-gray-500 underline "><a href="{{ route('enquete.edit', $enqueteData->id) }}">編集</a></td>
                   </tr>
                   {{-- メンバーの投票 --}}
                   @forEach ($votes as $vote)
@@ -54,7 +54,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-base">{{ $vote->reservation_time }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-base">{{ $vote->cuisine_type }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-base">{{ $vote->ambiance }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-base text-gray-500 underline "><a href="">編集</a></td>
+                    <td class="px-6 py-4 whitespace-nowrap text-base text-gray-500 underline "><a href="{{ route('enquetes.votes_edit', $vote->id) }}">編集</a></td>
                   </tr>
                   @endforeach
                 </tbody>

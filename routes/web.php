@@ -26,7 +26,9 @@ Route::controller(EnqueteController::class)->group(function () {
     Route::post('/store', 'store')->name('enquete.store');
     Route::post('/update', 'update')->name('enquete.update');
     Route::post('/enquete_update', 'enquete_update')->name('enquetes.enquete_update');
+    Route::post('/vote_update/{unique_identifier}', 'vote_update')->name('enquetes.vote_update');
     Route::get('/votes_create/{unique_identifier}', 'votes_create')->name('enquetes.votes_create');
+    Route::get('/votes_edit/{id}', 'votes_edit')->name('enquetes.votes_edit');
     Route::get('/edit/{id}', 'edit')->name('enquete.edit');
 });
 

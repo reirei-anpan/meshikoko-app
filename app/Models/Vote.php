@@ -21,6 +21,6 @@ class Vote extends Model
 
     public function enquetes()
     {
-        return $this->belongsTo(Enquete::class);
+        return $this->belongsTo(Enquete::class, 'enquete_id');
     }
 }

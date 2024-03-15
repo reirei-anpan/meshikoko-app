@@ -18,7 +18,7 @@ class EnqueteController extends Controller
         // 一意の値をもとにアンケート情報を取得
         $enqueteData = Enquete::where('unique_identifier', $unique_identifier)->firstOrFail();
         $votes = Vote::where('enquete_id', $enqueteData->id)->get();
-        // dd($votes);
+        // dd($enqueteData);
         return view('enquetes.index', [
             'enqueteData' => $enqueteData,
             'votes' => $votes
@@ -76,6 +76,16 @@ class EnqueteController extends Controller
         return view('enquetes.edit', compact('enquete'));
     }
 
+    public function votes_edit($id)
+    {
+        $vote = Vote::where('id', $id)->firstOrFail();
+
+        // Voteモデルから関連するEnqueteモデルにアクセス
+        $enquete = $vote->enquetes; // enquete()リレーションを利用
+        // dd($enquete);
+        return view('votes.edit', compact('vote', 'enquete'));
+    }
+
     /**
      * Update the specified resource in storage.
      */
@@ -97,8 +107,7 @@ class EnqueteController extends Controller
         // createメソッドを使用してVoteモデルの新しいインスタンスを作成し、データベースに保存
         $vote = Vote::create($data);
 
-        // 保存後、適切なレスポンスを返す（例: リダイレクト）
-        return redirect()->route('enquetes.index', ['unique_identifier' => $enqueteId->unique_identifier]); // 保存後に適切なページへリダイレクト
+        return redirect()->route('enquetes.index', ['unique_identifier' => $enqueteId->unique_identifier]);
     }
 
     public function enquete_update(Request $request)
@@ -114,6 +123,20 @@ class EnqueteController extends Controller
         $enquete->save();
 
         return redirect()->route('enquetes.index', $enquete->unique_identifier);
+    }
+
+    public function vote_update(Request $request, $unique_identifier)
+    {
+        // dd($request);
+        $vote = Vote::where('id', $request->id)->firstOrFail();
+        $vote->name = $request->name;
+        $vote->location = $request->location;
+        $vote->reservation_time = $request->reservation_time;
+        $vote->cuisine_type = $request->cuisine_type;
+        $vote->ambiance = $request->ambiance;
+        $vote->save();
+
+        return redirect()->route('enquetes.index', $unique_identifier);
     }
 
     /**
