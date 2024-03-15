@@ -22,7 +22,7 @@
       </div>
 
       <div>
-        <input type="hidden" id="hs-clipboard-tooltip-on-hover" value="{{$enquete->unique_identifier}}">
+        <input type="hidden" id="hs-clipboard-tooltip-on-hover" value="http://127.0.0.1:8000/index/{{$enquete->unique_identifier}}">  {{-- 本番運用では、ここにURLを入れる --}}
       </div>
 
       <div class="mt-10">
@@ -31,7 +31,7 @@
           data-clipboard-action="copy"
           data-clipboard-success-text="Copied">
           <span style="max-width: 550px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
-            {{$enquete->unique_identifier}}
+            http://127.0.0.1:8000/index/{{$enquete->unique_identifier}}
           </span>
           <span class=" border-s ps-3.5 dark:border-gray-700">
             <svg class="js-clipboard-default size-4 group-hover:rotate-6 transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
