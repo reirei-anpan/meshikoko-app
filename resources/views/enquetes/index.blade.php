@@ -5,12 +5,8 @@
 </head>
 <body class="max-w-[770px] mx-auto">
   <div class="bg-custom-bg pb-20">
-    <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-4 bg-custom-orange">
-      <nav class="max-w-[85rem] w-full mx-auto pl-10 sm:flex sm:items-center" aria-label="Global">
-        <img src="/images/meshikoko-icon.png" width="42" height="31" class="mr-2">
-        <a class="flex-none text-2xl font-black text-white" href="{{ route('create')}}">メシココ</a>
-      </nav>
-    </header>
+
+    <x-header />
 
     <div class="px-10">
       <div style="width: 70%;">
