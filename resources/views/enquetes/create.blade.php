@@ -12,7 +12,7 @@
       @csrf
       <div class="px-10">
         <div style="width: 70%;">
-          <p class="text-2xl text-custom-orange font-semibold mt-14 divide-slate-200">イベントを作成</p>
+          <p class="text-2xl text-custom-orange font-semibold mt-14">イベントを作成</p>
         </div>
 
         <div class="bg-white mt-3 px-8 py-8 rounded-lg">
@@ -48,7 +48,7 @@
             </select>
 
             <div>
-              <button class="mt-10 py-3 px-4 w-36 h-12 drop-shadow-lg flex justify-center items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent bg-custom-accent2 text-white disabled:opacity-50 disabled:pointer-events-none">
+              <button class="mt-10 py-3 px-4 w-36 h-12 drop-shadow-lg flex justify-center items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent bg-custom-orange text-white disabled:opacity-50 disabled:pointer-events-none">
                 確定
               </button>
             </div>

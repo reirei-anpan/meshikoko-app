@@ -3,26 +3,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   @vite('resources/css/app.css')
 </head>
-<body class="max-w-[770px] mx-auto">
+<body class="max-w-[770px] mx-auto font-custom">
   <div class="bg-custom-bg pb-20">
 
     <x-header />
 
-    <div class="pl-10">
+    <div class="px-10">
       <div style="width: 70%;">
-        <p class="text-2xl mt-14 border-b-2 divide-slate-200 pb-3">イベント URL発行</p>
-      </div>
-      <div class="mt-4">
-        <p>イベントが作成されました。以下のURLをメール等を使って皆に知らせてあげましょう。</p>
-        <p>以降、このURLページにて各自の出欠情報を入力してもらいます。</p>
+        <p class="text-2xl text-custom-orange font-semibold mt-14">イベントURL発行</p>
       </div>
 
-      <div>
+      <div class="bg-white mt-3 px-8 py-8 rounded-lg">
         <input type="hidden" id="hs-clipboard-tooltip-on-hover" value="http://127.0.0.1:8000/index/{{$enquete->unique_identifier}}">  {{-- 本番運用では、ここにURLを入れる --}}
-      </div>
-
-      <div class="mt-10">
-        <button type="button" class="js-clipboard drop-shadow-lg [--is-toggle-tooltip:false] hs-tooltip relative py-3 px-4 inline-flex justify-between items-center gap-x-2 text-sm font-mono rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+        <div>
+          <p>イベントが作成されました。LINE等を使って、以下のURLを皆に知らせましょう。</p>
+          <p>以降、このURLにて各自の意思を入力してもらいます。</p>
+        </div>
+        <button type="button" class="mt-3 js-clipboard shadow-custom-input [--is-toggle-tooltip:false] hs-tooltip relative py-3 px-4 inline-flex justify-between items-center gap-x-2 text-sm font-mono rounded-lg bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
           data-clipboard-target="#hs-clipboard-tooltip-on-hover"
           data-clipboard-action="copy"
           data-clipboard-success-text="Copied">
@@ -37,11 +34,12 @@
             <span class="js-clipboard-success-text">Copy</span>
           </span>
         </button>
+
+        <button type="button" class="mt-10 py-3 px-4 shadow-custom-input inline-flex items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent bg-custom-orange text-white disabled:opacity-50 disabled:pointer-events-none">
+          <a href="{{ route('enquetes.index', $enquete->unique_identifier)}}">イベントページを表示</a>
+        </button>
       </div>
 
-      <button type="button" class="mt-10 py-3 px-4 drop-shadow-lg inline-flex items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent bg-custom-accent2 text-white disabled:opacity-50 disabled:pointer-events-none">
-        <a href="{{ route('enquetes.index', $enquete->unique_identifier)}}">イベントページを表示</a>
-      </button>
     </div>
   </div>
 
