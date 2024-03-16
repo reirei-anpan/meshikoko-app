@@ -9,49 +9,48 @@
 
     <x-header />
 
-    <div class="pl-10">
+    <div class="px-10">
       <form method="POST" action="{{ route('enquete.update') }}">
         @csrf
-          <input type="hidden" name="enquete_id" value="{{ $enquete->id }}">
-          <div class="flex flex-row mt-10">
-            <p class="mr-3 text-xl bg-custom-accent1">Setp1</p>
-            <p class="text-xl">名前を入力</p>
-          </div>
-          <input type="text" name="name" class="mt-3 py-3 pl-3 pr-32 drop-shadow-md block border-2 border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="山田 太郎 など">
-
-          <div class="flex flex-row mt-10">
-            <p class="mr-3 text-xl bg-custom-accent1">Setp2</p>
-            <p class="text-xl">お店の情報を入力</p>
+          <div style="width: 70%;">
+            <p class="text-2xl text-custom-orange font-semibold mt-14">候補を追加</p>
           </div>
 
-          <div class="flex flex-row items-center mt-4">
-            <p class="py-3">場所</p>
-            <input type="text" name="location" class="ml-16 py-3 pl-3 pr-32 drop-shadow-md border-2 border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="渋谷、千葉 など">
-          </div>
+          <div class="bg-white mt-3 px-8 py-8 rounded-lg">
+            <input type="hidden" name="enquete_id" value="{{ $enquete->id }}">
+            <div>
+              <p class="font-semibold">あなたの名前</p>
+            </div>
+            <input type="text" name="name" class="mt-3 py-3 pl-3 pr-32 shadow-custom-input block rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="山田 太郎 など">
 
-          <div class="flex flex-row items-center mt-4">
-            <p class="py-3">予約時間</p>
-            <input type="time" name="reservation_time" value="17:00" step="300" class="ml-8 py-3 pl-3 pr-3 drop-shadow-md border-2 border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
-          </div>
+            <div class="mt-10">
+              <p class="font-semibold">イベント詳細</p>
+            </div>
 
-          <div class="flex flex-row items-center mt-4">
-            <p class="py-3">食事系統</p>
-            <input type="text" name="cuisine_type" class="ml-8 py-3 pl-3 pr-32 drop-shadow-md border-2 border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="焼き鳥, 海鮮, 中華 など">
-          </div>
+              <p class="mt-3 mb-2 ml-0.5">場所</p>
+              <input type="text" name="location" class="py-3 pl-3 pr-32 shadow-custom-input rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="渋谷、千葉 など">
 
-          <div class="flex flex-row items-center mt-4">
-            <p class="py-3">雰囲気</p>
-            <select name="ambiance" class="ml-12 py-3 pl-3 pr-6 drop-shadow-md border-2 border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="選択してください">
-              <option value="">選択してください</option>
-              <option value="1">カジュアル</option>
-              <option value="2">フォーマル</option>
-              <option value="3">カジュアルフォーマル</option>
-            </select>
-          </div>
+              <p class="mt-6 mb-2 ml-0.5">予約時間</p>
+              <input type="time" name="reservation_time" value="17:00" step="300" class="py-3 pl-3 pr-3 shadow-custom-input rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
 
-          <button class="mt-10 py-3 px-4 drop-shadow-lg inline-flex items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent bg-custom-accent2 text-white disabled:opacity-50 disabled:pointer-events-none">
-            候補を確定
-          </button>
+              <p class="mt-6 mb-2 ml-0.5">食事系統</p>
+              <input type="text" name="cuisine_type" class="py-3 pl-3 pr-32 shadow-custom-input rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="焼き鳥, 海鮮, 中華 など">
+
+              <p class="mt-6 mb-2 ml-0.5">お店の雰囲気の希望</p>
+              <select name="ambiance" class="py-3 pl-3 pr-6 shadow-custom-input rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="選択してください">
+                <option value="">選択してください</option>
+                <option value="1">カジュアル</option>
+                <option value="2">フォーマル</option>
+                <option value="3">カジュアルフォーマル</option>
+              </select>
+
+              <div>
+                <button class="mt-10 py-3 px-4 w-36 h-12 drop-shadow-lg flex justify-center items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent bg-custom-orange text-white disabled:opacity-50 disabled:pointer-events-none">
+                  確定
+                </button>
+              </div>
+
+          </div>
       </form>
     </div>
 
