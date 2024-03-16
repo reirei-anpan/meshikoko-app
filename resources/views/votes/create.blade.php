@@ -4,7 +4,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="max-w-[770px] mx-auto">
+<body class="max-w-[770px] mx-auto font-custom">
   <div class="bg-custom-bg pb-20">
 
     <x-header />
