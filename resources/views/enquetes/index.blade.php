@@ -10,7 +10,7 @@
 
     <div class="px-10">
       <div style="width: 70%;">
-        <p class="text-2xl text-custom-orange font-semibold mt-14">候補を入力する</p>
+        <p class="text-2xl text-custom-orange font-semibold mt-14">候補を入力</p>
       </div>
 
       <div class="bg-white mt-3 px-8 py-8 rounded-lg">
