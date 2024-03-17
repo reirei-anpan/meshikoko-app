@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Enquete;
 use App\Models\Vote;
+use App\Http\Requests\StoreVoteRequest;
 
 class VoteController extends Controller
 {
@@ -28,23 +29,16 @@ class VoteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreVoteRequest $request)
     {
+
+        $validatedRequest = $request->validated();
+
         //TODO：ここあきらかに無駄な実装なきがするのでリファクタリングの余地有り
         $enqueteId = Enquete::where('id', $request->enquete_id)->firstOrFail();
 
-        // バリデーションなしでリクエストから直接データを取得
-        $data = $request->only([
-            'enquete_id',
-            'name',
-            'location',
-            'reservation_time',
-            'cuisine_type',
-            'ambiance'
-        ]);
-
         // createメソッドを使用してVoteモデルの新しいインスタンスを作成し、データベースに保存
-        $vote = Vote::create($data);
+        $vote = Vote::create($validatedRequest);
 
         return redirect()->route('enquetes.index', ['unique_identifier' => $enqueteId->unique_identifier]);
     }
@@ -66,7 +60,7 @@ class VoteController extends Controller
 
         // Voteモデルから関連するEnqueteモデルにアクセス
         $enquete = $vote->enquetes; // enquete()リレーションを利用
-        // dd($enquete);
+
         return view('votes.edit', [
             'vote' => $vote,
             'enquete' => $enquete
