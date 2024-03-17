@@ -17,6 +17,15 @@
         </div>
 
         <div class="bg-white mt-3 px-8 py-8 rounded-lg">
+          @if ($errors->any())
+            <div class="alert alert-danger mb-10 text-red-500">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li class="pb-2">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+          @endif
           <div>
             <p class="font-semibold">あなたの名前</p>
           </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Enquete;
 use App\Models\Vote;
 use App\Http\Requests\StoreVoteRequest;
+use App\Http\Requests\UpdateVoteRequest;
 
 class VoteController extends Controller
 {
@@ -70,14 +71,14 @@ class VoteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $unique_identifier)
+    public function update(UpdateVoteRequest $request, $unique_identifier)
     {
+        $validated = $request->validated();
+
         $vote = Vote::where('id', $request->id)->firstOrFail();
-        $vote->name = $request->name;
-        $vote->location = $request->location;
-        $vote->reservation_time = $request->reservation_time;
-        $vote->cuisine_type = $request->cuisine_type;
-        $vote->ambiance = $request->ambiance;
+
+        // モデルの fill メソッドを使用して一括割り当て
+        $vote->fill($validated);
         $vote->save();
 
         return redirect()->route('enquetes.index', $unique_identifier);
