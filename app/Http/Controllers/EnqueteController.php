@@ -33,12 +33,6 @@ class EnqueteController extends Controller
         return view('enquetes.create');
     }
 
-    // public function votes_create($unique_identifier)
-    // {
-    //     $enquete = Enquete::where('unique_identifier', $unique_identifier)->firstOrFail();
-    //     return view('votes.create', compact('enquete'));
-    // }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -63,7 +57,7 @@ class EnqueteController extends Controller
     public function show($unique_identifier)
     {
         $enquete = Enquete::where('unique_identifier', $unique_identifier)->firstOrFail();
-        return view('enquetes.show', compact('enquete'));
+        return view('enquetes.show', [ 'enquete' => $enquete ]);
     }
 
     /**
@@ -73,7 +67,7 @@ class EnqueteController extends Controller
     {
         $enquete = Enquete::where('id', $id)->firstOrFail();
         // dd($enquete);
-        return view('enquetes.edit', compact('enquete'));
+        return view('enquetes.edit', [ 'enquete' => $enquete ]);
     }
 
     public function update(Request $request)

@@ -22,7 +22,7 @@ class VoteController extends Controller
     public function create($unique_identifier)
     {
         $enquete = Enquete::where('unique_identifier', $unique_identifier)->firstOrFail();
-        return view('votes.create', compact('enquete'));
+        return view('votes.create', [ 'enquete' => $enquete ]);
     }
 
     /**
@@ -67,7 +67,10 @@ class VoteController extends Controller
         // Voteモデルから関連するEnqueteモデルにアクセス
         $enquete = $vote->enquetes; // enquete()リレーションを利用
         // dd($enquete);
-        return view('votes.edit', compact('vote', 'enquete'));
+        return view('votes.edit', [
+            'vote' => $vote,
+            'enquete' => $enquete
+        ]);
     }
 
     /**
