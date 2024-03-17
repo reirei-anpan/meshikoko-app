@@ -8,7 +8,7 @@
 
     <x-header />
 
-    <form method="POST" action="{{ route('enquetes.vote_update', $enquete->unique_identifier) }}">
+    <form method="POST" action="{{ route('votes.update', $enquete->unique_identifier) }}">
       @csrf
       <input type="hidden" name="id" value="{{ $vote->id }}">
       <div class="pl-10">

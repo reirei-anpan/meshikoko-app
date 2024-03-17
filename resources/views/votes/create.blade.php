@@ -10,7 +10,7 @@
     <x-header />
 
     <div class="px-10">
-      <form method="POST" action="{{ route('enquete.update') }}">
+      <form method="POST" action="{{ route('votes.store') }}">
         @csrf
           <div style="width: 70%;">
             <p class="text-2xl text-custom-orange font-semibold mt-14">候補を追加</p>

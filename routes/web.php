@@ -19,19 +19,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(EnqueteController::class)->group(function () {
-    Route::get('/create', 'create')->name('create');
-    Route::get('/show/{unique_identifier}', 'show')->name('enquete.show');
-    Route::get('/index/{unique_identifier}', 'index')->name('enquetes.index');
-    Route::post('/store', 'store')->name('enquete.store');
-    Route::post('/update', 'update')->name('enquete.update');
-    Route::post('/enquete_update', 'enquete_update')->name('enquetes.enquete_update');
-    Route::post('/vote_update/{unique_identifier}', 'vote_update')->name('enquetes.vote_update');
-    Route::get('/votes_create/{unique_identifier}', 'votes_create')->name('enquetes.votes_create');
-    Route::get('/votes_edit/{id}', 'votes_edit')->name('enquetes.votes_edit');
-    Route::get('/edit/{id}', 'edit')->name('enquete.edit');
+Route::prefix('enquetes')->group(function () {
+    Route::controller(EnqueteController::class)->group(function () {
+        Route::get('create', 'create')->name('enquetes.create');
+        Route::get('show/{unique_identifier}', 'show')->name('enquetes.show');
+        Route::get('index/{unique_identifier}', 'index')->name('enquetes.index');
+        Route::post('store', 'store')->name('enquetes.store');
+        Route::get('edit/{id}', 'edit')->name('enquetes.edit');
+        Route::post('update', 'update')->name('enquetes.update');
+    });
 });
 
-Route::controller(VoteController::class)->group(function () {
-
+Route::prefix('votes')->group(function () {
+    Route::controller(VoteController::class)->group(function () {
+        Route::get('create/{unique_identifier}', 'create')->name('votes.create');
+        Route::post('store', 'store')->name('votes.store');
+        Route::get('edit/{id}', 'edit')->name('votes.edit');
+        Route::post('{unique_identifier}', 'update')->name('votes.update');
+    });
 });

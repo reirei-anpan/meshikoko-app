@@ -8,7 +8,7 @@
 
     <x-header />
 
-    <form method="POST" action="{{ route('enquete.store') }}">
+    <form method="POST" action="{{ route('enquetes.store') }}">
       @csrf
       <div class="px-10">
         <div style="width: 70%;">

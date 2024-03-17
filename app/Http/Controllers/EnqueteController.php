@@ -33,11 +33,11 @@ class EnqueteController extends Controller
         return view('enquetes.create');
     }
 
-    public function votes_create($unique_identifier)
-    {
-        $enquete = Enquete::where('unique_identifier', $unique_identifier)->firstOrFail();
-        return view('votes.create', compact('enquete'));
-    }
+    // public function votes_create($unique_identifier)
+    // {
+    //     $enquete = Enquete::where('unique_identifier', $unique_identifier)->firstOrFail();
+    //     return view('votes.create', compact('enquete'));
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -54,7 +54,7 @@ class EnqueteController extends Controller
         $enquete->unique_identifier = Str::random(32); // 32文字のランダムな文字列
         $enquete->save();
 
-    return redirect()->route('enquete.show', $enquete->unique_identifier);
+    return redirect()->route('enquetes.show', $enquete->unique_identifier);
     }
 
     /**
@@ -76,41 +76,7 @@ class EnqueteController extends Controller
         return view('enquetes.edit', compact('enquete'));
     }
 
-    public function votes_edit($id)
-    {
-        $vote = Vote::where('id', $id)->firstOrFail();
-
-        // Voteモデルから関連するEnqueteモデルにアクセス
-        $enquete = $vote->enquetes; // enquete()リレーションを利用
-        // dd($enquete);
-        return view('votes.edit', compact('vote', 'enquete'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request)
-    {
-        //TODO：ここあきらかに無駄な実装なきがするのでリファクタリングの余地有り
-        $enqueteId = Enquete::where('id', $request->enquete_id)->firstOrFail();
-
-        // バリデーションなしでリクエストから直接データを取得
-        $data = $request->only([
-            'enquete_id',
-            'name',
-            'location',
-            'reservation_time',
-            'cuisine_type',
-            'ambiance'
-        ]);
-
-        // createメソッドを使用してVoteモデルの新しいインスタンスを作成し、データベースに保存
-        $vote = Vote::create($data);
-
-        return redirect()->route('enquetes.index', ['unique_identifier' => $enqueteId->unique_identifier]);
-    }
-
-    public function enquete_update(Request $request)
     {
         // dd($request);
         $enquete = Enquete::where('id', $request->id)->firstOrFail();
@@ -123,20 +89,6 @@ class EnqueteController extends Controller
         $enquete->save();
 
         return redirect()->route('enquetes.index', $enquete->unique_identifier);
-    }
-
-    public function vote_update(Request $request, $unique_identifier)
-    {
-        // dd($request);
-        $vote = Vote::where('id', $request->id)->firstOrFail();
-        $vote->name = $request->name;
-        $vote->location = $request->location;
-        $vote->reservation_time = $request->reservation_time;
-        $vote->cuisine_type = $request->cuisine_type;
-        $vote->ambiance = $request->ambiance;
-        $vote->save();
-
-        return redirect()->route('enquetes.index', $unique_identifier);
     }
 
     /**

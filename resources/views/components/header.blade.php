@@ -1,7 +1,7 @@
 <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full text-sm py-4 bg-custom-orange">
     <nav class="max-w-[85rem] w-full mx-auto pl-10 sm:items-center" aria-label="Global">
         <div>
-            <a class="text-xs font-black text-white pl-1" href="{{ route('create') }}">メシココ</a>
+            <a class="text-xs font-black text-white pl-1" href="{{ route('enquetes.create') }}">メシココ</a>
         </div>
         <div>
             <img src="/images/meshikoko-icon.png" width="62" height="46">

@@ -6,7 +6,7 @@
     <input type="text" name="location" value="{{ $formData['location'] ?? ''  }}" class="py-3 pl-3 pr-32 drop-shadow-md rounded-lg text-sm focus:ring-2 focus:ring-custom-accent1 focus:outline-none disabled:opacity-50 disabled:pointer-events-none" placeholder="渋谷、千葉 など">
 
     <p class="mt-6 mb-2 ml-0.5">予約時間</p>
-    <input type="time" name="reservation_time" value="{{ $formData['reservation_time'] ?? '' }}" step="300" class="py-3 pl-3 pr-3 drop-shadow-md rounded-lg text-sm focus:ring-2 focus:ring-custom-accent1 focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+    <input type="time" name="reservation_time" value="{{ $formData['reservation_time'] ?? '' }}" class="py-3 pl-3 pr-3 drop-shadow-md rounded-lg text-sm focus:ring-2 focus:ring-custom-accent1 focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
 
     <p class="mt-6 mb-2 ml-0.5">食事系統</p>
     <input type="text" name="cuisine_type" value="{{ $formData['cuisine_type'] ?? '' }}" class="py-3 pl-3 pr-32 drop-shadow-md rounded-lg text-sm focus:ring-2 focus:ring-custom-accent1 focus:outline-none disabled:opacity-50 disabled:pointer-events-none" placeholder="焼き鳥, 海鮮, 中華 など">

@@ -41,7 +41,7 @@
                       <td class="px-6 py-4 whitespace-nowrap text-base">{{ $enqueteData->reservation_time }}</td>
                       <td class="px-6 py-4 whitespace-nowrap text-base">{{ $enqueteData->cuisine_type }}</td>
                       <td class="px-6 py-4 whitespace-nowrap text-base">{{ $enqueteData->ambiance }}</td>
-                      <td class="px-6 py-4 whitespace-nowrap text-base text-gray-500 underline "><a href="{{ route('enquete.edit', $enqueteData->id) }}">編集</a></td>
+                      <td class="px-6 py-4 whitespace-nowrap text-base text-gray-500 underline "><a href="{{ route('enquetes.edit', $enqueteData->id) }}">編集</a></td>
                     </tr>
                     {{-- メンバーの投票 --}}
                     @forEach ($votes as $vote)
@@ -51,7 +51,7 @@
                       <td class="px-6 py-4 whitespace-nowrap text-base">{{ $vote->reservation_time }}</td>
                       <td class="px-6 py-4 whitespace-nowrap text-base">{{ $vote->cuisine_type }}</td>
                       <td class="px-6 py-4 whitespace-nowrap text-base">{{ $vote->ambiance }}</td>
-                      <td class="px-6 py-4 whitespace-nowrap text-base text-gray-500 underline "><a href="{{ route('enquetes.votes_edit', $vote->id) }}">編集</a></td>
+                      <td class="px-6 py-4 whitespace-nowrap text-base text-gray-500 underline "><a href="{{ route('votes.edit', $vote->id) }}">編集</a></td>
                     </tr>
                     @endforeach
                   </tbody>
@@ -62,7 +62,7 @@
         </div>
 
         <button type="button" class="mt-10 py-3 px-4 shadow-custom-input inline-flex items-center gap-x-2 text-base font-semibold rounded-lg border border-transparent bg-custom-orange text-white disabled:opacity-50 disabled:pointer-events-none">
-          <a href="{{ route('enquetes.votes_create', ['unique_identifier' => $enqueteData->unique_identifier]) }}">+ 候補を追加する</a>
+          <a href="{{ route('votes.create', ['unique_identifier' => $enqueteData->unique_identifier]) }}">+ 候補を追加する</a>
         </button>
       </div>
 
